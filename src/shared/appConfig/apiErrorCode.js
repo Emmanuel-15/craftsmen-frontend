@@ -14,6 +14,7 @@ export const ERROR_MESSAGES = {
     "ERROR_WHILE_CREATING_BOOKING": "Booking not created. Please try after some time.",
     "BOOKING_DATE_TIME_TO_IS_REQUIRED": "Booking date & time is required",
     "BOOKING_DATE_TIME_FROM_IS_REQUIRED": "Booking date & time is required",
-    "NO_BOOKING_FOUND": "No bookings found"
+    "NO_BOOKING_FOUND": "No bookings found",
+    "INVALID_EMAIL": "Invalid email address"
 
 }

@@ -1,8 +1,55 @@
-import React from "react";
-
-import logo from '../../assets/img/crafsmen-logo.png';
+import React, { useState } from "react";
+// import React from "react";
+import { Button } from "antd";
+import axios from "axios";
+import { toast } from 'react-toastify';
+// import logo from '../../assets/img/crafsmen-logo.png';
 
 export default function ContactUs() {
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [subject, setSubject] = useState('');
+    const [message, setMessage] = useState('');
+    const [loadingBooking, setLoadingBooking] = useState(false);
+
+    const handleNameChange = (e) => { setName(e.target.value); }
+    const handleEmailChange = (e) => { setEmail(e.target.value); }
+    const handleSubjectChange = (e) => { setSubject(e.target.value); }
+    const handleMessageChange = (e) => { setMessage(e.target.value); }
+
+    const handleSendClick = () => {
+
+        let formData = {
+            "name": name,
+            "email": email,
+            "subject": subject,
+            "message": message
+        }
+
+        setLoadingBooking(true);
+        axios
+            .post('/sendContactUs', formData)
+            .then(op => {
+                console.log("I am op: ", op);
+
+                setLoadingBooking(false);
+                if (op) {
+                    toast.success('Your message has been sent. Thank you!');
+                    setName('');
+                    setEmail('');
+                    setSubject('');
+                    setMessage('');
+                }
+
+
+            })
+            .catch(e => {
+                console.log("Exception: ", e);
+
+                setLoadingBooking(false)
+            })
+    }
+
     return (
         <main id="main">
             <section className="breadcrumbs">
@@ -61,25 +108,63 @@ export default function ContactUs() {
                         </div>
 
                         <div className="col-lg-5 col-md-12" data-aos="fade-up" data-aos-delay="300">
-                            <form action="forms/contact.php" method="post" role="form" className="php-email-form">
+                            <form action="#" method="POST" role="form" className="php-email-form">
                                 <div className="form-group">
-                                    <input type="text" name="name" className="form-control" id="name" placeholder="Your Name" required />
+                                    <input
+                                        value={name}
+                                        type="text"
+                                        name="name"
+                                        className="form-control"
+                                        id="name"
+                                        placeholder="Your Name"
+                                        required
+                                        onChange={handleNameChange}
+                                    />
                                 </div>
                                 <div className="form-group">
-                                    <input type="email" className="form-control" name="email" id="email" placeholder="Your Email" required />
+                                    <input
+                                        value={email}
+                                        type="email"
+                                        className="form-control"
+                                        name="email"
+                                        id="email"
+                                        placeholder="Your Email"
+                                        required
+                                        onChange={handleEmailChange}
+                                    />
                                 </div>
                                 <div className="form-group">
-                                    <input type="text" className="form-control" name="subject" id="subject" placeholder="Subject" required />
+                                    <input
+                                        value={subject}
+                                        type="text"
+                                        className="form-control"
+                                        name="subject"
+                                        id="subject"
+                                        placeholder="Subject"
+                                        required
+                                        onChange={handleSubjectChange}
+                                    />
                                 </div>
                                 <div className="form-group">
-                                    <textarea className="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+                                    <textarea
+                                        value={message}
+                                        className="form-control"
+                                        name="message"
+                                        rows="5"
+                                        placeholder="Message"
+                                        required
+                                        onChange={handleMessageChange}
+                                    />
                                 </div>
                                 <div className="my-3">
                                     <div className="loading">Loading</div>
                                     <div className="error-message"></div>
                                     <div className="sent-message">Your message has been sent. Thank you!</div>
                                 </div>
-                                <div className="text-center"><button type="submit">Send Message</button></div>
+                                <div className="text-center">
+                                    {/* <button type="primary" loading={loadingBooking} disabled={!name || !email || !subject || !message} onClick={handleSendClick}>Send Message</button> */}
+                                    <Button type="primary" disabled={!name || !email || !subject || !message} loading={loadingBooking} onClick={handleSendClick} >Send Message</Button>
+                                </div>
                             </form>
                         </div>
 
