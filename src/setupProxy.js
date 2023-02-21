@@ -126,4 +126,15 @@ module.exports = function (app) {
     })
   );
 
+  app.use(
+    '/cancelBooking',
+    createProxyMiddleware({
+      target: API_URL,
+      changeOrigin: true,
+      pathRewrite: function (path, req) {
+        return `/api/v1/entrance/cancel-bookings/${req.query.i}`;
+      }
+    })
+  );
+
 };
