@@ -30,7 +30,7 @@ export default function ContactUs() {
         axios
             .post('/sendContactUs', formData)
             .then(op => {
-                console.log("I am op: ", op);
+                // console.log("I am op: ", op);
 
                 setLoadingBooking(false);
                 if (op) {

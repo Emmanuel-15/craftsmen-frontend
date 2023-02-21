@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Modal, DatePicker, Skeleton, Button } from "antd";
 import dayjs from 'dayjs';
+import moment from "moment";
 import axios from "axios";
 import { toast } from 'react-toastify';
 
@@ -9,7 +10,36 @@ export default function BookServiceModal({ selectedObj, id, bookNowModalOpen, se
     const [fromDate, setFromDate] = useState('');
     const [toDate, setToDate] = useState('');
     const [loadingBooking, setLoadingBooking] = useState(false);
+    const customDatesToDisable = [];
 
+    useEffect(() => {
+        axios
+            .get(`/checkAvailability?i=${selectedObj.contractorId}`)
+            .then(op => {
+                if (op && op.data && op.data.result && op.data.result.length > 0) {
+                    op.data.result.forEach((e) => {
+                        getDaysArray(dayjs(e.bookingDateTimeFrom).format('YYYY-MM-DD'), dayjs(e.bookingDateTimeTo).format('YYYY-MM-DD'));
+                    })
+                }
+            })
+            .catch(e => { console.log("Exception:", e); })
+    });
+
+    let getDaysArray = function (start, end) {
+        for (let dt = new Date(start); dt <= new Date(end); dt.setDate(dt.getDate() + 1)) {
+            customDatesToDisable.push(dayjs(dt).format('YYYY-MM-DD'));
+        }
+    };
+
+    function isDisabledDate(current) {
+        // Disable dates that are before today
+        if (current && current < moment().endOf('day')) {
+            return true;
+        }
+        // Disable custom dates
+        const dateString = current.format('YYYY-MM-DD');
+        return customDatesToDisable.includes(dateString);
+    }
 
     const handleFromChange = (e) => {
         setFromDate(e);
@@ -64,6 +94,7 @@ export default function BookServiceModal({ selectedObj, id, bookNowModalOpen, se
                         showTime={{ defaultValue: dayjs('00:00:00', 'HH:mm') }}
                         placeholder={'Select booking from date'}
                         onChange={handleFromChange}
+                        disabledDate={isDisabledDate}
                     />
                 </div>
                 <div className="mb-3">
@@ -74,6 +105,7 @@ export default function BookServiceModal({ selectedObj, id, bookNowModalOpen, se
                         showTime={{ defaultValue: dayjs('00:00:00', 'HH:mm') }}
                         placeholder={'Select booking to date'}
                         onChange={handleToChange}
+                        disabledDate={isDisabledDate}
                     />
                 </div>
                 <div className="d-flex align-items-center justify-content-end mt-5">

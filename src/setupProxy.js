@@ -137,4 +137,15 @@ module.exports = function (app) {
     })
   );
 
+  app.use(
+    '/checkAvailability',
+    createProxyMiddleware({
+      target: API_URL,
+      changeOrigin: true,
+      pathRewrite: function (path, req) {
+        return `/api/v1/entrance/contractor-availability/${req.query.i}`;
+      }
+    })
+  );
+
 };

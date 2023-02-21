@@ -30,7 +30,7 @@ export default function MyBookings() {
         axios
             .get('/getCustomerBookings')
             .then(op => {
-                console.log("I am list of all boookings", op)
+                // console.log("I am list of all boookings", op)
                 setMyBookings(op.data.result);
                 // setMyBookings([]);
                 setLoadingBookings(false);
@@ -56,11 +56,9 @@ export default function MyBookings() {
         axios
             .delete(`/cancelBooking?i=${toDelId}`)
             .then(op => {
-                console.log("I am output::", op);
                 loadBookings()
                 setLoading(false);
                 if (!_.isEmpty(op) && !_.isEmpty(op.data) && op.data.message === 'BOOKING_CANCELLED') {
-                    // loadList();
                     toast.success('Booking Cancelled successfully', {
                         position: "top-right",
                         autoClose: 5000,
