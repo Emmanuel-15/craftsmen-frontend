@@ -141,13 +141,13 @@ export default function MyBookings() {
                                                                     <td>{el.serviceTitle}</td>
                                                                     <td>{dayjs(el.bookingDateTimeFrom).format('DD-MM-YYYY HH:MM')}</td>
                                                                     <td>{dayjs(el.bookingDateTimeTo).format('DD-MM-YYYY HH:MM')}</td>
-                                                                    <td>{el.discountPrice}</td>
+                                                                    <td>Rs {el.discountPrice}</td>
                                                                     <td>{el.bookingStatus}</td>
                                                                     <td>
                                                                         {/* <a href="/" className="text-secondary font-weight-bold text-xs text-danger" data-toggle="tooltip" data-original-title="Edit user">
                                                                             <i className="fas fa-trash-alt  me-1"></i> Cancel
                                                                         </a> */}
-                                                                        <Button variant="outlined" loading  color="error" type="primary" disabled={el.bookingStatus == 'CANCEL'} onClick={(e) => handleCancelClick(e, el.bookingId)} ><i className="fas fa-trash-alt  me-1"></i> Cancel</Button>
+                                                                        <Button variant="outlined" loading color="error" type="primary" disabled={el.bookingStatus == 'CANCEL' || el.bookingStatus == 'COMPLETE'} onClick={(e) => handleCancelClick(e, el.bookingId)} ><i className="fas fa-trash-alt  me-1"></i> Cancel</Button>
                                                                     </td>
                                                                 </tr>
                                                             )

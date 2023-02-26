@@ -27,20 +27,20 @@ export default function AboutUs() {
                     <div className="row content">
                         <div className="col-lg-6" data-aos="fade-up" data-aos-delay="150">
                             <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                                magna aliqua.
+                                We have embarked on this new journey with a new vision, mission and a new set of core values.
                             </p>
                             <ul>
-                                <li><i className="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
-                                <li><i className="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit</li>
-                                <li><i className="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
+                                <li><i className="ri-check-double-line"></i> “We design solutions that protect, inspire and touch lives everyday”.</li>
+                                {/* <li><i className="ri-check-double-line"></i> “We have embarked on this new journey with a new vision, mission and a new set of core values."</li> */}
+                                <li><i className="ri-check-double-line"></i> "Our core values are a representation of an enthusiastic group of people, together around a single purpose."</li>
                             </ul>
                         </div>
                         <div className="col-lg-6 pt-4 pt-lg-0" data-aos="fade-up" data-aos-delay="300">
                             <p>
-                                Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                                velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                                culpa qui officia deserunt mollit anim id est laborum.
+                                It takes hard work and passion. It takes commitment and courage. It means marching ahead with fearless innovation.
+                                It involves taking risks and celebrating when they work. And going back to the drawing board when they do not.
+                                It means being keenly attuned to the needs of the customer. And still being invested in the environment.
+                                It requires investing in R and D, in technology, in your workforce.
                             </p>
                             <a href="#" className="btn-learn-more">Learn More</a>
                         </div>
@@ -63,32 +63,32 @@ export default function AboutUs() {
                                     <div className="col-md-6 d-md-flex align-items-md-stretch">
                                         <div className="count-box">
                                             <i className="bi bi-emoji-smile"></i>
-                                            <span data-purecounter-start="0" data-purecounter-end="65" data-purecounter-duration="1" className="purecounter">65</span>
-                                            <p><strong>Happy Clients</strong> consequuntur voluptas nostrum aliquid ipsam architecto ut.</p>
+                                            <span data-purecounter-start="0" data-purecounter-end="65" data-purecounter-duration="1" className="purecounter">14</span>
+                                            <p><strong>Happy Clients</strong> satisfied by our services.</p>
                                         </div>
                                     </div>
 
                                     <div className="col-md-6 d-md-flex align-items-md-stretch">
                                         <div className="count-box">
                                             <i className="bi bi-journal-richtext"></i>
-                                            <span data-purecounter-start="0" data-purecounter-end="85" data-purecounter-duration="1" className="purecounter">85</span>
-                                            <p><strong>Projects</strong> adipisci atque cum quia aspernatur totam laudantium et quia dere tan</p>
+                                            <span data-purecounter-start="0" data-purecounter-end="85" data-purecounter-duration="1" className="purecounter">15</span>
+                                            <p><strong>Projects</strong> undertaken by Craftsmen.</p>
                                         </div>
                                     </div>
 
                                     <div className="col-md-6 d-md-flex align-items-md-stretch">
                                         <div className="count-box">
                                             <i className="bi bi-clock"></i>
-                                            <span data-purecounter-start="0" data-purecounter-end="18" data-purecounter-duration="1" className="purecounter">19</span>
-                                            <p><strong>Years of experience</strong> aut commodi quaerat modi aliquam nam ducimus aut voluptate non vel</p>
+                                            <span data-purecounter-start="0" data-purecounter-end="18" data-purecounter-duration="1" className="purecounter">1</span>
+                                            <p><strong>Years of experience</strong> Craftsmen has been gaining and growing itself.</p>
                                         </div>
                                     </div>
 
                                     <div className="col-md-6 d-md-flex align-items-md-stretch">
                                         <div className="count-box">
                                             <i className="bi bi-award"></i>
-                                            <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" className="purecounter">15</span>
-                                            <p><strong>Awards</strong> rerum asperiores dolor alias quo reprehenderit eum et nemo pad der</p>
+                                            <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" className="purecounter">3</span>
+                                            <p><strong>Awards</strong> acheived by Craftsmen and it's team.</p>
                                         </div>
                                     </div>
                                 </div>

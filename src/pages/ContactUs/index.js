@@ -85,17 +85,17 @@ export default function ContactUs() {
                             <div className="info mb-5">
                                 <div>
                                     <i className="ri-map-pin-line"></i>
-                                    <p>A108 Adam Street<br />New York, NY 535022</p>
+                                    <p>Colva Beach Rd,<br />Colva, Goa 403718</p>
                                 </div>
 
                                 <div>
                                     <i className="ri-mail-send-line"></i>
-                                    <p>info@example.com</p>
+                                    <p>craftsmen@gmail.com</p>
                                 </div>
 
                                 <div>
                                     <i className="ri-phone-line"></i>
-                                    <p>+1 5589 55488 55s</p>
+                                    <p>+91 9881088345</p>
                                 </div>
 
                             </div>
