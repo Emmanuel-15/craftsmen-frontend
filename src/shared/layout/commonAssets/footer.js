@@ -1,4 +1,6 @@
 import React from "react";
+import { FloatingWhatsApp } from 'react-floating-whatsapp';
+import craftsmenLogo from '../../../assets/img/hero-img.png';
 
 export default function Footer() {
 
@@ -26,6 +28,16 @@ export default function Footer() {
                     </div>
                 </div>
             </div>
+            <FloatingWhatsApp
+                phoneNumber="1234567890"
+                accountName="Craftsmen"
+                avatar={craftsmenLogo}
+                allowEsc
+                allowClickAway
+                notification
+                notificationSound
+                statusMessage="Craftsmen at your service"
+            />
         </footer>
     );
 }
