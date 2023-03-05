@@ -25,6 +25,7 @@ export const ERROR_MESSAGES = {
     "BOOKING_ALREADY_CANCELLED": "Booking already cancelled.",
     "ERROR_WHILE_CANCELLING_BOOKING": "Error while cancelling booking, Please try again later.",
     "ERROR_WHILE_FETCHING_RECORDS": "Error while fetching records.",
+    "MAX_BOOKING_PERIOD_5_DAYS": "You can book contractor for maximum 5 days.",
 
     "ERROR_WHILE_FETCHING_CONTRACTORS": "Error while fetching contractors",
     "ERROR_WHILE_FETCHING_CONTRACTOR": "Error while fetching contractor",
