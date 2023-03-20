@@ -6,6 +6,8 @@ export const ERROR_MESSAGES = {
     "NO_AUTHORIZATINO_HEADER_FOUND": "Please login to proceed.",
     "INVALID_ID": "Invalid id",
 
+    "NAME_SHOULD_NOT_EXCEED_20_CHARACTERS": "Name should be less than 20 characters",
+    "ADDRESS_SHOULD_NOT_EXCEED_100_CHARACTERS": "Address should be less than 100 characters",
 
     "INCORRECT_BOOKING_DATE_TIME_TO": "Incorrect dates.",
     "CONTRACTOR_NOT_AVAILABLE": "The contractor is not available for the selected date please choose some other date.",
