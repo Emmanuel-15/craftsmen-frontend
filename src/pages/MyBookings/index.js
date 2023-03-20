@@ -118,7 +118,7 @@ export default function MyBookings() {
                                     {
                                         loadingBookings ?
                                             <tr>
-                                                <td className="text-center border-0" colSpan={7}>
+                                                <td className="text-center border-0" colSpan={8}>
                                                     <div className="py-5 bg-light">
                                                         <Spin />
                                                         <h5 className="mt-3 fw-normal text-black-50">Loading Data</h5>
@@ -130,7 +130,7 @@ export default function MyBookings() {
                                                 {
                                                     _.isEmpty(myBookings) ?
                                                         <>
-                                                            <tr><td className="text-center border-0" colSpan={7}><NoData noDataTitle={'No bookings made by you'} /></td></tr>
+                                                            <tr><td className="text-center border-0" colSpan={8}><NoData noDataTitle={'No bookings made by you'} /></td></tr>
                                                         </> : <>{
 
                                                             (myBookings) && myBookings.map((el) =>
