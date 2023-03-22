@@ -52,7 +52,7 @@ export default function Home() {
 
                         <div className="section-title" data-aos="fade-up">
                             <h2>Services</h2>
-                            <p>Follow are the list of services provided by Craftsmen</p>
+                            <p>Following are the list of services provided by Craftsmen</p>
                         </div>
 
                     </div>

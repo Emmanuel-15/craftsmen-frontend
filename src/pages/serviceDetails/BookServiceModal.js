@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { Modal, DatePicker, Skeleton, Button } from "antd";
+import { Modal, DatePicker, Input, Skeleton, Button } from "antd";
 import dayjs from 'dayjs';
 import moment from "moment";
 import axios from "axios";
 import { toast } from 'react-toastify';
+const { TextArea } = Input;
 
 export default function BookServiceModal({ selectedObj, id, bookNowModalOpen, setBookNowModalOpen }) {
 
     const [fromDate, setFromDate] = useState('');
     const [toDate, setToDate] = useState('');
+    const [bookingAddress, setBookingAddress] = useState('');
     const [loadingBooking, setLoadingBooking] = useState(false);
     const customDatesToDisable = [];
 
@@ -49,6 +51,10 @@ export default function BookServiceModal({ selectedObj, id, bookNowModalOpen, se
         setToDate(e);
     }
 
+    const handleAddressChange = (e) => {
+        setBookingAddress(e.target.value);
+    }
+
     const handleBookNowModalClose = () => {
         setBookNowModalOpen(false);
         setFromDate('');
@@ -61,8 +67,10 @@ export default function BookServiceModal({ selectedObj, id, bookNowModalOpen, se
             "serviceId": parseInt(id),
             "bookingDateTimeFrom": dayjs(fromDate).format('YYYY-MM-DD HH:mm:ss'),
             "bookingDateTimeTo": dayjs(toDate).format('YYYY-MM-DD HH:mm:ss'),
-            "servicePriceId": parseInt(selectedObj.servicePriceId)
+            "servicePriceId": parseInt(selectedObj.servicePriceId),
+            "bookingAddress": bookingAddress
         }
+        console.log("I am values: ", bookingData)
         setLoadingBooking(true);
         axios
             .post('/createNewBooking', bookingData)
@@ -108,9 +116,17 @@ export default function BookServiceModal({ selectedObj, id, bookNowModalOpen, se
                         disabledDate={isDisabledDate}
                     />
                 </div>
+                <div className="mb-3">
+                    <label for="address" className="form-label">Booking Address</label>
+                    <TextArea
+                        placeholder="The place where you want our service to be provided"
+                        onChange={handleAddressChange}
+                        autoSize={{ minRows: 1, maxRows: 2 }}
+                    />
+                </div>
                 <div className="d-flex align-items-center justify-content-end mt-5">
                     <Button className="me-2 d-flex align-items-center justify-content-center" onClick={() => handleBookNowModalClose()} icon={<i className="fas fa-times me-2" />} htmlType="button">Cancel</Button>
-                    <Button type="primary" htmlType="submit" disabled={!fromDate || !toDate} loading={loadingBooking} onClick={handleOkClick} icon={<i class="fas fa-calendar-week me-2"></i>}>Book</Button>
+                    <Button type="primary" htmlType="submit" disabled={!fromDate || !toDate || !bookingAddress} loading={loadingBooking} onClick={handleOkClick} icon={<i class="fas fa-calendar-week me-2"></i>}>Book</Button>
                 </div>
             </div>
         </Modal>

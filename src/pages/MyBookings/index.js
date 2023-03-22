@@ -112,6 +112,7 @@ export default function MyBookings() {
                                         <th scope="col">To Date</th>
                                         <th scope="col">Price</th>
                                         <th scope="col">Status</th>
+                                        <th scope="col">Address</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -142,12 +143,13 @@ export default function MyBookings() {
                                                                     <td>{dayjs(el.bookingDateTimeFrom).format('DD-MM-YYYY HH:MM')}</td>
                                                                     <td>{dayjs(el.bookingDateTimeTo).format('DD-MM-YYYY HH:MM')}</td>
                                                                     <td>Rs {el.discountPrice}</td>
+                                                                    <td>{el.bookingAddress}</td>
                                                                     <td>{el.bookingStatus}</td>
                                                                     <td>
                                                                         {/* <a href="/" className="text-secondary font-weight-bold text-xs text-danger" data-toggle="tooltip" data-original-title="Edit user">
                                                                             <i className="fas fa-trash-alt  me-1"></i> Cancel
                                                                         </a> */}
-                                                                        <Button variant="outlined" loading color="error" type="primary" disabled={el.bookingStatus == 'CANCEL' || el.bookingStatus == 'COMPLETE'} onClick={(e) => handleCancelClick(e, el.bookingId)} ><i className="fas fa-trash-alt  me-1"></i> Cancel</Button>
+                                                                        <Button variant="outlined" loading color="error" type="primary" disabled={el.bookingStatus === 'CANCEL' || el.bookingStatus === 'COMPLETE'} onClick={(e) => handleCancelClick(e, el.bookingId)} ><i className="fas fa-trash-alt  me-1"></i> Cancel</Button>
                                                                     </td>
                                                                 </tr>
                                                             )

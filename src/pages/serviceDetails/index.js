@@ -5,6 +5,7 @@ import { getImagePath } from '../../shared/helper/genHelper';
 import _ from 'lodash';
 import { Skeleton } from "antd";
 import BookServiceModal from "./BookServiceModal";
+import { toast } from 'react-toastify';
 
 export default function ServiceDetails() {
 
@@ -32,9 +33,62 @@ export default function ServiceDetails() {
             .catch(e => { console.log("Exception:", e); setLoadingService(false); })
     }
 
-    const handleBookClick = (contractorId, servicePriceId) => {
-        setBookNowModalOpen(true);
-        setSelectedObj({ contractorId: contractorId, servicePriceId: servicePriceId });
+    const handleBookClick = async (contractorId, servicePriceId) => {
+        //Checks if user has logged in or not to proceed to bookings
+        const token = await localStorage.getItem("__t");
+
+        if (token) {
+            //Checks if user has entered his details in profile settings or not before creating a booking.
+            await axios
+                .get('/getCustomerDetails', { headers: { 'Authorization': `Bearer ${localStorage.getItem("__t")}` } })
+                .then(op => {
+                    if (op && op.data && op.data.result) {
+                        console.log("Data: ", op.data.result)
+                        if (op.data.result.userContactNumber !== null &&
+                            op.data.result.userGender != null &&
+                            op.data.result.userAddress !== null &&
+                            op.data.result.userName !== null) {
+                            // console.log("User has all details filled.");
+                            setBookNowModalOpen(true);
+                            setSelectedObj({ contractorId: contractorId, servicePriceId: servicePriceId });
+                        }
+                        else {
+                            toast.error("Please update profile to proceed.");
+                            // console.log("User has not filled in details.");
+                        }
+                    }
+                })
+                .catch(e => {
+                    console.log("Exception:", e);
+                })
+        }
+        else {
+            toast.error("Please login to proceed.");
+        }
+    }
+
+    //additional changes below
+    const getCustomer = async () => {
+        axios
+            .get('/getCustomerDetails', { headers: { 'Authorization': `Bearer ${localStorage.getItem("__t")}` } })
+            .then(op => {
+                if (op && op.data && op.data.result) {
+                    console.log("Data: ", op.data.result)
+                    if (op.data.result.userContactNumber !== null &&
+                        op.data.result.userGender != null &&
+                        op.data.result.userGender !== null &&
+                        op.data.result.userImage !== null &&
+                        op.data.result.userName !== null) {
+                        console.log("User has all details filled.");
+                    }
+                    else {
+                        console.log("User has not filled in details.");
+                    }
+                }
+            })
+            .catch(e => {
+                console.log("Exception:", e);
+            })
     }
 
     return (
@@ -78,6 +132,7 @@ export default function ServiceDetails() {
                                 <div className="card">
                                     <div className="card-header text-center bg-white">
                                         Prices for service
+                                        <div className="card-title mb-0" style={{ color: '#B12704', fontSize: 12 }}>!Material charges not included</div>
                                     </div>
                                     {loadingService ? <div className="p-3"><Skeleton active /></div> :
                                         !_.isEmpty(serviceDetails.prices) && serviceDetails.prices.map((el, index) =>
