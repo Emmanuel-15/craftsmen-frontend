@@ -131,7 +131,7 @@ export default function MyBookings() {
                                                 {
                                                     _.isEmpty(myBookings) ?
                                                         <>
-                                                            <tr><td className="text-center border-0" colSpan={8}><NoData noDataTitle={'No bookings made by you'} /></td></tr>
+                                                            <tr><td className="text-center border-0" colSpan={9}><NoData noDataTitle={'No bookings made by you'} /></td></tr>
                                                         </> : <>{
 
                                                             (myBookings) && myBookings.map((el) =>
