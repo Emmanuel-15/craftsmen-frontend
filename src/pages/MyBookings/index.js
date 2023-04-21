@@ -119,7 +119,7 @@ export default function MyBookings() {
                                     {
                                         loadingBookings ?
                                             <tr>
-                                                <td className="text-center border-0" colSpan={8}>
+                                                <td className="text-center border-0" colSpan={9}>
                                                     <div className="py-5 bg-light">
                                                         <Spin />
                                                         <h5 className="mt-3 fw-normal text-black-50">Loading Data</h5>
@@ -143,8 +143,8 @@ export default function MyBookings() {
                                                                     <td>{dayjs(el.bookingDateTimeFrom).format('DD-MM-YYYY HH:MM')}</td>
                                                                     <td>{dayjs(el.bookingDateTimeTo).format('DD-MM-YYYY HH:MM')}</td>
                                                                     <td>Rs {el.discountPrice}</td>
-                                                                    <td>{el.bookingAddress}</td>
                                                                     <td>{el.bookingStatus}</td>
+                                                                    <td>{el.bookingAddress}</td>
                                                                     <td>
                                                                         {/* <a href="/" className="text-secondary font-weight-bold text-xs text-danger" data-toggle="tooltip" data-original-title="Edit user">
                                                                             <i className="fas fa-trash-alt  me-1"></i> Cancel
